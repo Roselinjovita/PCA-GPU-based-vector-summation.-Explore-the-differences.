@@ -259,6 +259,23 @@ int main(int argc, char **argv)
 ![EXP1 3 GPU](https://github.com/Roselinjovita/PCA-GPU-based-vector-summation.-Explore-the-differences./assets/119104296/81d547cc-abdb-4b38-90a2-e4f73a6cc86c)
 
 
+## DIFFERENCES AND THE REASON:
+ • By changing the block size from 128 to 256, the number of
+blocks needed to process the same amount of data was halved, from 65536 to
+32768. However, since each thread now handles two elements instead of one,
+the total number of threads needed remains the same, which is equal to the
+product of the number of blocks and the block size.
+
+ • The execution time for the kernel sumArraysOnGPU-timer
+decreased slightly from 0.021174 sec to 0.019774 sec when the block size was
+changed from 128 to 256. This suggests that the optimal block size may lie
+between these two values.
+
+ • The execution time for sumArraysOnHost remains
+constant, as it is not affected by the block size. The overall performance of the
+program is determined by the execution time of the kernel sumArraysOnGPUtimer, which can be optimized by experimenting with different block sizes.
+
+
 
 
 
